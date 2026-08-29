@@ -56,6 +56,8 @@ Rokid AI Glasses RV101には、マイク、ディスプレイ、Wi-Fiがあり�
 
 同じ場所で使うときは、RokidをWi-Fiへ接続します。Macを自宅などに置いたまま外出先で使うときは、RokidのWi-Fi接続先をスマートフォンのテザリングへ切り替え、インターネット経由でMacへ接続します。
 
+保存済みWi-Fiの切り替えをRokid単体で行いたい場合は、別アプリの [Wi-Fi Selector](https://github.com/ksuzukigh/rokid-wifi-selector) を利用できます。Hi Rokidで設定したアクセスポイントのうち、現在接続しているものと付近にある候補をRokidへ表示し、自宅などのWi-Fiとスマートフォンのテザリングを選んで切り替えられます。
+
 インターネット上のRokidからMacへ安全に接続するため、Cloudflare Tunnelのような仕組みで、認証付きのHTTPS通信経路を用意します。この公開版では通信先と認証情報を例示値に置き換えているため、使う人が自分の通信経路を準備する必要があります。
 
 ### 4. Macで音声を文字にする
@@ -133,7 +135,8 @@ Web検索の回答にURLが含まれていれば、そのURLもAIの答えの一
 
 再現には、少なくとも次の環境と作業が必要です。
 
-- Rokid AI Glasses RV101
+- Hi Rokidで開発者モード（ADB）を有効にしたRokid AI Glasses RV101
+- Rokid開発用5ピンUSBケーブル（初回のアプリ導入と動作確認に使用。付属の3ピンUSBケーブルは充電用のため、Macとの接続には使えません）
 - macOSを搭載したMac
 - Node.jsとAndroidの開発環境
 - ChatGPTデスクトップアプリと、ChatGPTへログイン済みのCodex CLI
