@@ -35,13 +35,21 @@
 
 図は全体の流れを示したものです。実際の通信先や認証情報は含めていません。
 
-### 1. Rokidで話す
+### 1. Rokid上の「私のAI」を開く
+
+Rokid上では、「私のAI」という小さなAndroidアプリが動いています。このアプリはAI本体ではなく、Macとの接続を始めて、Rokidの **AIUI** を開くための起動役です。
+
+AIUIは、RokidのYodaOS上で小さなアプリを動かすための仕組みです。AIUIで動かすプログラム一式を **AIX** と呼びます。「私のAI」を開くと、起動アプリが認証付きHTTPSでMacへ接続し、その会話のために作られた一時的なAIXを受け取ってAIUIで開きます。会話が終わると、このAIXはRokidから削除されます。
+
+AIUIは、画面表示、テンプル操作、マイク録音を担当します。AIXはAIUIの録音機能（RecorderManager）を使って、Rokidのマイクから16kHz・モノラルの音声データを受け取り、認証付きHTTPSでMacへ送ります。AIUIだけでAIの処理をしているわけではなく、音声認識とAIによる判断はMac側で行います。
+
+### 2. Rokidで話す
 
 Rokid AI Glasses RV101には、マイク、ディスプレイ、Wi-Fiがあります。
 
 利用者の声はRokidのマイクで録音します。Rokidの中でAIが動いているわけではありません。録音した音声をWi-FiでMacへ送り、Macから返ってきた答えをRokidのディスプレイに表示します。
 
-### 2. RokidとMacを通信させる
+### 3. RokidとMacを通信させる
 
 この仕組みを使うには、RokidとMacの間で通信できることが必要です。
 
@@ -49,13 +57,13 @@ Rokid AI Glasses RV101には、マイク、ディスプレイ、Wi-Fiがあり�
 
 インターネット上のRokidからMacへ安全に接続するため、Cloudflare Tunnelのような仕組みで、認証付きのHTTPS通信経路を用意します。この公開版では通信先と認証情報を例示値に置き換えているため、使う人が自分の通信経路を準備する必要があります。
 
-### 3. Macで音声を文字にする
+### 4. Macで音声を文字にする
 
 MacではChatGPTデスクトップアプリを常時起動して運用します。Rokidからの通信は、Macで待機している専用プログラムが受け取ります。
 
 届いた音声は、Mac上のwhisper.cpp（Whisper）で文字データに変換します。発話がないときに余分な文章を作らないよう、Whisperへ渡す前に音声の有無も判定します。録音と変換用の一時ファイルは、処理後に削除します。
 
-### 4. Codexが依頼を処理する
+### 5. Codexが依頼を処理する
 
 文字にした利用者の発言を、ChatGPTデスクトップアプリに同梱されているCodex CLIへ渡します。この環境では、AIモデルに **GPT-5.6 Luna** を指定しています。
 
@@ -63,13 +71,13 @@ ChatGPT Workで使うCodexには、ObsidianとGoogle Driveを利用するため�
 
 Codexは利用者の発言と、それまでの会話を読んで、質問への回答、Web調査、Obsidianの検索、文書作成など、何を求められているのかを判断します。意味がはっきりしないときは、決めつけずにRokidへ聞き返します。
 
-### 5. 答えをRokidへ戻す
+### 6. 答えをRokidへ戻す
 
 Codexが作った答えは、RokidからMacへ音声を送ったときと逆の通信経路を通ってRokidへ戻り、ディスプレイに表示されます。
 
 利用者が「続けて話す」を選ぶと、次の発言も同じCodexの会話へ渡すため、前の話を踏まえたやり取りを続けられます。
 
-### 6. 最低限の制限をかける
+### 7. 最低限の制限をかける
 
 自然な質問や依頼の理解を、決まった言い方や固定メニューへ狭めない一方で、通信と保存・編集には次の制限をかけています。
 
@@ -131,15 +139,14 @@ AIが勝手に文書を作ったり、書き換えたりすることはありま
 
 ## 主なフォルダ
 
-- `daily-launcher-android/` — Rokidのアプリ一覧から「私のAI」を開く部分
+- `daily-launcher-android/` — Rokidのアプリ一覧から「私のAI」を開き、一時AIXをAIUIで起動する部分
 - `daily-gateway/` — 会話、録音、Web・Obsidianの参照、保存前の確認をまとめる中心部分
 - `mac-companion/` — Macのログイン後に、Rokidからの開始要求を待つ部分
-- `aiui-knowledge-bridge/` — Rokidの画面、音声、Macとの受け渡しを扱う部分
+- `aiui-knowledge-bridge/` — AIUIで動くAIXを作り、Rokidの画面、音声、Macとの受け渡しを扱う部分
 - `knowledge-router/` — Obsidianから必要な文書を探し、回答へ渡す部分
 - `action-candidate/` — 保存前に内容を見せ、確認後に1回だけ実行する仕組みの原型
-- `daily-app/` — 現在の形へ至る前に作った初期版
 
-中心となるのは、`daily-launcher-android/`、`daily-gateway/`、`mac-companion/`です。ほかのフォルダには、機能を一つずつ試しながら現在の形へ発展させた過程も残しています。
+中心となるのは、`daily-launcher-android/`、`daily-gateway/`、`mac-companion/`です。
 
 主な節目は [CHANGELOG](CHANGELOG.md) で確認できます。
 
