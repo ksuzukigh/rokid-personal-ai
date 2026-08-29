@@ -1,0 +1,120 @@
+{
+  "version": 2,
+  "maxFileBytes": 1048576,
+  "excludedSegments": [
+    ".obsidian",
+    ".trash",
+    "attachments",
+    "_delete_before_backup",
+    "_deleted_backup",
+    "_削除前バックアップ",
+    "旧資料",
+    "試用"
+  ],
+  "rules": [
+    {
+      "prefix": "Rokidシステム化/検証/検証台帳.md",
+      "sourceKind": "validation_ledger",
+      "evidenceRole": "current_system_evidence",
+      "sendPolicy": "allow",
+      "priority": 9
+    },
+    {
+      "prefix": "Rokidシステム化/Rokidシステム構想書.md",
+      "sourceKind": "system_master",
+      "evidenceRole": "current_system_evidence",
+      "sendPolicy": "allow",
+      "priority": 8
+    },
+    {
+      "prefix": "Rokidシステム化/README.md",
+      "sourceKind": "current_system_summary",
+      "evidenceRole": "current_system_evidence",
+      "sendPolicy": "allow",
+      "priority": 7
+    },
+    {
+      "prefix": "Rokidシステム化/必須資料一覧.md",
+      "sourceKind": "source_index",
+      "evidenceRole": "reference_only",
+      "sendPolicy": "allow",
+      "priority": 1
+    },
+    {
+      "prefix": "Rokidシステム化/",
+      "sourceKind": "system_record",
+      "evidenceRole": "current_system_evidence",
+      "sendPolicy": "allow",
+      "priority": 5
+    },
+    {
+      "prefix": "_\u57f7\u7b46OS/",
+      "sourceKind": "operating_rule",
+      "evidenceRole": "user_policy_evidence",
+      "sendPolicy": "allow",
+      "priority": 4
+    },
+    {
+      "prefix": "Facebook\u6295\u7a3f/",
+      "sourceKind": "authored_record",
+      "evidenceRole": "personal_evidence",
+      "sendPolicy": "allow",
+      "priority": 3
+    },
+    {
+      "prefix": "note\u6295\u7a3f\u8a18\u4e8b/",
+      "sourceKind": "authored_record",
+      "evidenceRole": "personal_evidence",
+      "sendPolicy": "allow",
+      "priority": 3
+    },
+    {
+      "prefix": "IT\u30e9\u30a4\u30d5\u30cf\u30c3\u30af\u8a18\u4e8b\u5236\u4f5c/",
+      "sourceKind": "authored_record",
+      "evidenceRole": "personal_evidence",
+      "sendPolicy": "allow",
+      "priority": 3
+    },
+    {
+      "prefix": "IT\u30e9\u30a4\u30d5\u30cf\u30c3\u30af\u5bc4\u7a3f\u5206/",
+      "sourceKind": "authored_record",
+      "evidenceRole": "personal_evidence",
+      "sendPolicy": "allow",
+      "priority": 3
+    },
+    {
+      "prefix": "FB\u30a2\u30fc\u30ab\u30a4\u30d5\u3099/",
+      "sourceKind": "personal_history",
+      "evidenceRole": "historical_personal_evidence",
+      "sendPolicy": "confirm",
+      "priority": 2
+    },
+    {
+      "prefix": "Clippings/",
+      "sourceKind": "external_reference",
+      "evidenceRole": "reference_only",
+      "sendPolicy": "allow",
+      "priority": 0
+    },
+    {
+      "prefix": "\u65c5\u884c/",
+      "sourceKind": "external_reference",
+      "evidenceRole": "reference_only",
+      "sendPolicy": "allow",
+      "priority": 0
+    },
+    {
+      "prefix": "\u8003\u5bdf\u8cc7\u6599/",
+      "sourceKind": "external_reference",
+      "evidenceRole": "reference_only",
+      "sendPolicy": "allow",
+      "priority": 0
+    }
+  ],
+  "fallback": {
+    "sourceKind": "unclassified",
+    "evidenceRole": "unclassified",
+    "sendPolicy": "confirm",
+    "priority": -1
+  }
+}

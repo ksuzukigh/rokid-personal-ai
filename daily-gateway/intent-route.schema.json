@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "intent",
+    "summary",
+    "confirmation_required",
+    "recording_consent_required",
+    "clarifying_question",
+    "reason"
+  ],
+  "properties": {
+    "intent": {
+      "type": "string",
+      "enum": [
+        "voice_note",
+        "personal_knowledge_question",
+        "web_research_note",
+        "needs_clarification",
+        "unsupported"
+      ]
+    },
+    "summary": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "confirmation_required": { "type": "boolean" },
+    "recording_consent_required": { "type": "boolean" },
+    "clarifying_question": { "type": "string", "maxLength": 160 },
+    "reason": { "type": "string", "minLength": 1, "maxLength": 240 }
+  }
+}

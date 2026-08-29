@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "answer": { "type": "string", "minLength": 1, "maxLength": 1800 },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source_id": { "type": "string", "pattern": "^S[1-6]$" },
+          "claim": { "type": "string", "minLength": 1, "maxLength": 240 }
+        },
+        "required": ["source_id", "claim"],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 6
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"]
+    },
+    "missing_information": {
+      "type": "array",
+      "items": { "type": "string", "maxLength": 240 },
+      "maxItems": 4
+    }
+  },
+  "required": ["answer", "citations", "confidence", "missing_information"],
+  "additionalProperties": false
+}

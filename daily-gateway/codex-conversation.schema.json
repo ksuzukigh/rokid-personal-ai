@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["message", "needs_user_input", "effect_proposal"],
+  "properties": {
+    "message": { "type": "string", "minLength": 1, "maxLength": 240, "pattern": "^[^\\r\\n]+$" },
+    "needs_user_input": { "type": "boolean" },
+    "effect_proposal": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["action", "summary", "details", "title", "body", "current_text", "replacement_text", "resolved_path"],
+      "properties": {
+        "action": { "type": "string", "enum": ["create_obsidian_markdown", "replace_obsidian_text", "create_google_doc"] },
+        "summary": { "type": "string", "minLength": 1, "maxLength": 240, "pattern": "^[^\\r\\n]+$" },
+        "details": { "type": "string", "minLength": 1, "maxLength": 2000, "pattern": "^[^\\r\\n]+$" },
+        "title": { "type": "string", "minLength": 1, "maxLength": 60, "pattern": "^[^\\r\\n]+$" },
+        "body": { "type": "string", "maxLength": 400 },
+        "current_text": { "type": "string", "maxLength": 400 },
+        "replacement_text": { "type": "string", "maxLength": 400 },
+        "resolved_path": { "type": "string", "maxLength": 240, "pattern": "^[^\\r\\n]*$" }
+      }
+    }
+  }
+}

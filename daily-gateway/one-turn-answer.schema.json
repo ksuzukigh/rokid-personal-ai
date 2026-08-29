@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "answer",
+    "completed",
+    "unavailable_reason",
+    "used_previous_turn",
+    "operation",
+    "document_title",
+    "document_match_text",
+    "document_body",
+    "document_target"
+  ],
+  "properties": {
+    "answer": { "type": "string", "minLength": 1, "maxLength": 240 },
+    "completed": { "type": "boolean" },
+    "unavailable_reason": { "type": "string", "maxLength": 240 },
+    "used_previous_turn": { "type": "boolean" },
+    "operation": { "type": "string", "enum": ["none", "consult_local_documents", "create_new_document", "append_document", "replace_document_text", "save_document_to_google_drive"] },
+    "document_title": { "type": "string", "maxLength": 60 },
+    "document_match_text": { "type": "string", "maxLength": 400 },
+    "document_body": { "type": "string", "maxLength": 400 },
+    "document_target": { "type": "string", "enum": ["", "私のAI 作成文書", "Obsidianの既存文書", "Google DriveのRokid/私のAI 保存文書(Googleドキュメント)"] }
+  }
+}

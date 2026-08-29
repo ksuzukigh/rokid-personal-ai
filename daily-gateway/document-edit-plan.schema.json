@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "ready",
+    "source_id",
+    "current_text",
+    "replacement_text",
+    "clarification"
+  ],
+  "properties": {
+    "ready": { "type": "boolean" },
+    "source_id": { "type": "string", "pattern": "^(|S[1-6])$" },
+    "current_text": { "type": "string", "maxLength": 400 },
+    "replacement_text": { "type": "string", "maxLength": 400 },
+    "clarification": { "type": "string", "maxLength": 180 }
+  }
+}

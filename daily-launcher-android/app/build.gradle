@@ -1,0 +1,39 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'io.github.ksuzukigh.rokidpersonalai'
+    compileSdk 35
+
+    def bootstrapTokenFile = new File(System.getProperty('user.home'), '.config/rokid-personal-ai/bootstrap-token')
+    def bootstrapToken = bootstrapTokenFile.exists() ? bootstrapTokenFile.text.trim() : ''
+
+    defaultConfig {
+        applicationId 'io.github.ksuzukigh.rokidpersonalai'
+        minSdk 32
+        targetSdk 32
+        versionCode 29
+        versionName '0.23.1'
+        buildConfigField 'String', 'BOOTSTRAP_TOKEN', '"' + bootstrapToken.replace('\\', '\\\\').replace('"', '\\"') + '"'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    lint {
+        disable 'ExpiredTargetSdkVersion'
+    }
+}

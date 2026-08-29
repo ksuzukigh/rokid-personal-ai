@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "disposition",
+    "action_type",
+    "summary",
+    "target_scope",
+    "target_hint",
+    "payload_preview",
+    "risk",
+    "confirmation_required",
+    "unresolved_questions",
+    "reason"
+  ],
+  "properties": {
+    "disposition": {
+      "type": "string",
+      "enum": ["propose_action", "clarify", "answer_only", "refuse"]
+    },
+    "action_type": {
+      "type": "string",
+      "enum": [
+        "none",
+        "create_or_append_note",
+        "update_record",
+        "send_or_publish",
+        "delete",
+        "purchase",
+        "schedule",
+        "other"
+      ]
+    },
+    "summary": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "target_scope": {
+      "type": "string",
+      "enum": ["obsidian", "calendar", "message", "external_service", "filesystem", "unknown"]
+    },
+    "target_hint": { "type": "string", "maxLength": 160 },
+    "payload_preview": { "type": "string", "maxLength": 500 },
+    "risk": { "type": "string", "enum": ["none", "low", "medium", "high"] },
+    "confirmation_required": { "type": "boolean" },
+    "unresolved_questions": {
+      "type": "array",
+      "maxItems": 3,
+      "items": { "type": "string", "minLength": 1, "maxLength": 160 }
+    },
+    "reason": { "type": "string", "minLength": 1, "maxLength": 240 }
+  }
+}

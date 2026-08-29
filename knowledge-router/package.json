@@ -1,0 +1,9 @@
+{
+  "name": "rokid-obsidian-knowledge-router",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test knowledge-router.test.mjs knowledge-pipeline.test.mjs"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "rokid-free-text-action-candidate",
+  "version": "0.8.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test action-candidate.test.mjs prepare-candidate-preview-aix.test.mjs confirmation-ticket.test.mjs confirmation-relay.test.mjs dry-run-execution-adapter.test.mjs trial-note-adapter.test.mjs web-research.test.mjs web-note-adapter.test.mjs prepare-confirmation-aix.test.mjs prepare-web-confirmation-aix.test.mjs voice-note-relay.test.mjs prepare-voice-note-aix.test.mjs"
+  }
+}

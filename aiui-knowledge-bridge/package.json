@@ -1,0 +1,9 @@
+{
+  "name": "rokid-aiui-knowledge-bridge",
+  "version": "0.1.0-test",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test relay.test.mjs transcribe.test.mjs voice-knowledge-relay.test.mjs prepare-aix.test.mjs prepare-voice-aix.test.mjs prepare-safe-aix.test.mjs voice-aix-source/lib/one-shot-audio.test.mjs"
+  }
+}
