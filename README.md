@@ -1,5 +1,7 @@
 # Rokid Personal AI（私のAI）
 
+> **このリポジトリはV1の参考資料です。** Macの通常の会話と仕事を眼鏡から続けるV2のコンセプト・設計・再現手引きは、[私のAI V2](https://github.com/ksuzukigh/rokid-personal-ai-v2)で公開しています。V1の説明と参考コードは、開発の前段階を理解する資料として残しています。
+
 Rokid AI Glassesは、マイクとディスプレイを備えたスマートグラスです。
 
 「私のAI」は、Macでいつも使っているChatGPTデスクトップアプリを、Rokidから使えるようにしたものです。ChatGPTからは、Obsidianに保存したメモや資料、Google Driveにある文書も利用できます。
